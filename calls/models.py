@@ -6,8 +6,8 @@ class Call(models.Model):
     width = models.IntegerField(default=512)
     height = models.IntegerField(default=512)
     model = models.CharField(max_length=200, default="")
-    # todo: receive initial image
-    # initial_image =
+    initial_image = models.ImageField(
+        null=True, blank=True, upload_to='images/')
     number_of_samples = models.IntegerField(default=512)
     seed = models.IntegerField(default=512)
     num_outputs = models.IntegerField(default=1)
