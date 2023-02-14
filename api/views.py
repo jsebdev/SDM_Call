@@ -1,6 +1,5 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework.parsers import JSONParser
 
 from calls.models import Call
 from .serializers import CallSerializer
@@ -30,8 +29,6 @@ def call(request):
     print('28: request >>>', request.method)
     if request.method == 'POST':
 
-        # data = JSONParser().parse(request)
-        # serializer = CallSerializer(data=data)
         serializer = CallSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
