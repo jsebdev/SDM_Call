@@ -1,14 +1,19 @@
 # from django.apps import apps
 from django.contrib import admin
 
-from .models import Call
+from .models import Call, GeneratedImage
+
+
+class GeneratedImageInline(admin.StackedInline):
+    model = GeneratedImage
 
 
 @admin.register(Call)
 class ProfileAdmin(admin.ModelAdmin):
     model = Call
-    list_display = ('prompt', 'width', 'height', 'model', 'initial_image',
-                    'number_of_samples', 'seed', 'num_outputs', 'called_at')
+    inlines = [GeneratedImageInline]
+    list_display = ('id', 'prompt', 'width', 'height', 'model', 'initial_image',
+                    'number_of_samples', 'seed', 'number_of_outputs', 'called_at')
 
 
 # @admin.register(Item)

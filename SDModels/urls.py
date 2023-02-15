@@ -21,5 +21,5 @@ from django.conf.urls.static import static
 # todo: change root path to something with sd_call
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('api.urls'))
+    path('', include('calls.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
